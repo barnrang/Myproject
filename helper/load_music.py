@@ -1,7 +1,6 @@
 from pydub import AudioSegment
 import numpy as np
 import os
-import pygame
 
 def music_load(dir='../Music_sample',load_list=[],length=5000):
     if load_list == []:
@@ -16,5 +15,5 @@ def music_load(dir='../Music_sample',load_list=[],length=5000):
             print('Warning, file {} not found'.format(el))
             continue
         file_dir = os.path.join(dir,el)
-        out_array.append(AudioSegment.from_mp3(file_dir).get_array_of_samples()[:length].tolist())
-    return np.array(out_array,dtype='int16')
+        out_array.append(AudioSegment.from_mp3(file_dir)[:length].get_array_of_samples().tolist())
+    return np.array(out_array)
